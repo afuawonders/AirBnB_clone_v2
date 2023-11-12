@@ -7,6 +7,7 @@ from fabric.api import run
 
 env.hosts = ["54.208.215.43", "52.91.151.149"]
 
+
 def do_pack():
     """
         generates a .tgz archine from contents of web_static
@@ -18,8 +19,9 @@ def do_pack():
         local("tar --create --verbose -z --file={} ./web_static"
               .format(file_name))
         return file_name
-    except:
+    except Exception:
         return None
+
 
 def do_deploy(archive_path):
     """Distributes an archive to a web server.
