@@ -101,3 +101,7 @@ class DBStorage:
             for cls in name2class.values():
                 total += self.__session.query(cls).count()
         return total
+
+    def close(self):
+        """Close the working SQLAlchemy session."""
+        self.__session.close()
